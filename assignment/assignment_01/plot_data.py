@@ -21,9 +21,10 @@ y_hat = func(x)
 y_hat_2 = func(x_hat)
 y_hat_3 = func2(x_hat)
 y_hat_4 = func3(x_hat)
+y_hat_5 = func3(x)
 
 # Calculate the mean squared error (MSE).
-mse = np.mean((y - y_hat)**2)
+mse = np.mean((y - y_hat_5)**2)
 
 print("MSE:", mse)
 
@@ -32,7 +33,7 @@ print("MSE:", mse)
 fig = plt.figure()
 plt.scatter(x, y)
 plt.plot(x_hat, y_hat_3, "g-")
-plt.plot(x_hat, y_hat_2, "r-")
+plt.plot(x_hat, y_hat_2, "r")
 plt.plot(x_hat, y_hat_4, "b-")
 
 

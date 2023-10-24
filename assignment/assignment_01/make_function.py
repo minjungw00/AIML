@@ -387,13 +387,38 @@ for i in l:
 
 
 from scipy.optimize import curve_fit
+from regression import func, func2, func3, func4
 
 x = data[:, 0]
 y = data[:, 1]
 
-def quadratic_model(x, a, b, c, d, e, f, g):
-    return a * x ** 3 + b * x ** 2 + c * x + (d * x ** 2 + e * x + f) * np.sin(x) + g
 
-params, covariance = curve_fit(quadratic_model, x, y)
 
-print(f"{params[0]} * x ** 3 + {params[1]} * x ** 2 + {params[2]} * x + ({params[3]} * x ** 2 + {params[4]} * x + {params[5]}) * np.sin(x) + {params[6]}")
+'''
+def quadratic_model1(x, a, b, c):
+    return a * x ** 2 + b * x + c
+
+def quadratic_model2(x, a, b, c, d, e):
+    return a * np.exp(b * x + c) + d * x + e
+
+params, covariance = curve_fit(quadratic_model2, x, y, maxfev=100000)
+
+# print(f"{params[0]} * x ** 2 + {params[1]} * x + {params[2]}")
+print(f"{params[0]} * np.exp({params[1]} * x + {params[2]}) + {params[3]} * x + {params[4]}") 
+'''
+
+def quadratic_model(x, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o):
+    return a * x ** 2 + b * x + c + d * np.sin(e * x + f) + g * np.sin(h * x + i) + j * np.sin(k * x + l) + m * np.sin(n * x + o) 
+
+params, covariance = curve_fit(quadratic_model, x, y, [0.029565943435839646, 0.1378579815628654, -9.654010240351456, -5.892426664318304, 0.5000054698264715, 0.48003462287003157, -4.785135902940669, 2 * 0.5000054698264715, 0.48003462287003157, 0.33748801526606803, 4 * 0.5000054698264715, 0.6888970464338859, 0.5573537057993518, 8 * 0.5000054698264715, -2.631462677359398], maxfev=100000)
+
+print(f"{params[0]} * x ** 2 + {params[1]} * x + {params[2]} + {params[3]} * np.sin({params[4]} * x + {params[5]}) + {params[6]} * np.sin({params[7]} * x + {params[8]}) + {params[9]} * np.sin({params[10]} * x + {params[11]}) + {params[12]} * np.sin({params[13]} * x + {params[14]}) ")
+
+'''
+def quadratic_model(x, a, b, c, d, e, f, g, h, i):
+    return a * x ** 2 + b * x + c + d * np.sin(e * x + f) + g * np.sin(h * x + i) 
+
+params, covariance = curve_fit(quadratic_model, x, y, [0.029565943435839646, 0.1378579815628654, -9.654010240351456, -5.892426664318304, 0.5000054698264715, 0.48003462287003157, -4.785135902940669, 2 * 0.5000054698264715, 0.48003462287003157], maxfev=100000)
+
+print(f"{params[0]} * x ** 2 + {params[1]} * x + {params[2]} + {params[3]} * np.sin({params[4]} * x + {params[5]}) + {params[6]} * np.sin({params[7]} * x + {params[8]})")
+'''
