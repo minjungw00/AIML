@@ -1,5 +1,0 @@
-{
-    "terminal.integrated.scrollback": 3000,
-    "notebook.output.textLineLimit": 30,
-    "notebook.output.scrolling": true
-}
