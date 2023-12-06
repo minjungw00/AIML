@@ -7,8 +7,8 @@ from sklearn.metrics import average_precision_score
 from classification import Model01
 
 # Load the dataset.
-df_train = pd.read_csv("data_train.csv", encoding="utf-8-sig")
-df_valid = pd.read_csv("data_valid.csv", encoding="utf-8-sig")
+df_train = pd.read_csv("C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/data_train.csv", encoding="utf-8-sig")
+df_valid = pd.read_csv("C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/data_valid.csv", encoding="utf-8-sig")
 
 
 # Print all column names.
@@ -41,5 +41,5 @@ y_pred = model.predict(df_valid)
 # Output the validation result.
 df_result = pd.DataFrame(y_pred, columns=["성별"])
 df_result.index.name = "식별자"
-df_result.to_csv("model01_result_valid.csv",
+df_result.to_csv("C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/model01_result_valid.csv",
                  encoding="utf-8-sig")

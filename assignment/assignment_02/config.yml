@@ -6,6 +6,6 @@
 "ID": "20190807"
 "FILES":
     - "C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/model01_result_valid.csv" 
-    # - "YOUR-PATH-TO-REPO/assignment_02/classification.py" 
+    - "C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/classification.py" 
 "PROBLEMS": 
     - "PROBLEM_01"
