@@ -31,25 +31,41 @@ def train_and_cal_metrics(model):
     print()
     '''
 
-    return acc+rocauc+prauc, acc, rocauc, prauc
+    return acc + rocauc + prauc, acc, rocauc, prauc
 
 
-# Print all column names.
-# for col in df_train.columns:
-#    print(col)
 
 # Create the classification models.
 model = Model01()
+arr = []
+
+'''
+for col in df_train.columns:
+   print(f"'{col}',")
+
+
+for i in range(0, 1000):
+   temp = []
+   model._model = MLPClassifier(random_state=i)
+   temp.append(train_and_cal_metrics(model)[0])
+   temp.append(i)
+   arr.append(temp)
+   
+arr.sort()
+for a in arr:
+    a[0], a[1] = a[1], a[0]
+    print(a)
+'''
 
 import csv
 
-for a in range(19999999 - 198, 0, -1):
+for a in range(0, 1):
 
     with open("C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/test_data_v02.csv", "a", newline='') as f:
         writer = csv.writer(f)
 
-        for i in range(9, -1, -1):
-            model._model = MLPClassifier(random_state= (10 * a) + i)
+        for i in range(0, 10):
+            model._model = MLPClassifier(random_state= (10 * a) + i, max_iter=500)
             metric, acc, rocauc, prauc = train_and_cal_metrics(model)
             data = [(10 * a) + i, metric, acc, rocauc, prauc]
             writer.writerow(data)

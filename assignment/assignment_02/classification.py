@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import StandardScaler
 
 class ClassificationModel:
     def __init__(self):
@@ -20,21 +21,39 @@ class ClassificationModel:
         X = df[self._features]
         y = df["성별"]
 
-        self._model.fit(X, y)
+        scaler = StandardScaler().fit(X)
+
+        # self._model.fit(X, y)
+        self._model.fit(scaler.transform(X), y)
     
     
     def predict(self, df):
         X = df[self._features]
-        pred = self._model.predict(X)
-        return pred
-        
 
-    
+        scaler = StandardScaler().fit(X)
+
+        # pred = self._model.predict(X)
+        pred = self._model.predict(scaler.transform(X))
+        return pred
+
 
 class Model01(ClassificationModel):
     def __init__(self):
-        self._model = MLPClassifier(random_state=9756)
-    
+        self._model = MLPClassifier(hidden_layer_sizes=[100,100,100],
+                                    activation='relu',
+                                    solver='adam',
+                                    alpha=0.0005,
+                                    batch_size=195,
+                                    learning_rate='adaptive',
+                                    max_iter=500,
+                                    shuffle=False,
+                                    random_state=9756,
+                                    early_stopping=False,
+                                    beta_1=0.9,
+                                    beta_2=0.999,
+                                    epsilon=1e-8
+                                    )
+                                    
         self._features = [
             '키',
 '눈높이',

@@ -30,10 +30,10 @@ acc = accuracy_score(y_train, y_pred)
 rocauc = roc_auc_score(y_train, y_pred)
 prauc = average_precision_score(y_train, y_pred)
 
-print("[Model#01] Acc: %f"%(acc))
-print("[Model#01] ROC-AUC: %f"%(rocauc))
-print("[Model#01] PR-AUC: %f"%(prauc))
-print()
+print(f"[Model#01] Acc: {acc:.12f}")
+print(f"[Model#01] ROC-AUC: {rocauc:.12f}")
+print(f"[Model#01] PR-AUC: {prauc:.12f}")
+print(f"[Model#01] Metric: {acc + rocauc + prauc:.12f}")
 
 # Predict using the validation data.
 y_pred = model.predict(df_valid)
