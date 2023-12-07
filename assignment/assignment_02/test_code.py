@@ -59,7 +59,7 @@ for a in arr:
 
 import csv
 
-for a in range(0 + 1989, 10000000):
+for a in range(0 + 2354, 10000000):
 
     with open("C:/Users/min/Desktop/Artech/3_2/AIML/assignment/assignment_02/test_data.csv", "a", newline='') as f:
         writer = csv.writer(f)
